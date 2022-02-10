@@ -1,0 +1,301 @@
+body {
+    max-width:1200px;
+    margin: auto;
+    color: #808080;
+    
+}
+p:not(aside p){
+    font-family: Helvetica, Arial, sans-serif;
+    color: #7A7878;
+}
+main {
+    display: grid;
+    gap: 10px;
+    grid-template-areas: 
+        "header"
+        "section"
+        "aside"
+        "footer";
+}
+i {
+    margin-right: 10px;
+}
+a {
+    cursor: pointer;
+}
+a:hover {
+    color: #d86303;
+}
+
+/* HEADER */ 
+
+header {
+    padding-top: 30px;
+    background-position: center;
+    background-image: url('images/header.jpg');
+    display: grid;
+    gap: 10px;
+    grid-area: header;
+    justify-items: center;
+    grid-template-areas: 
+        "logo"
+        "link_1"
+        "link_2"
+        "link_3"
+        "link_4"
+        "link_5"
+        "link_6"
+        "cab_txt";
+}
+/* Para que las a estén horizontalmente a la altura del centro del iccono */
+header a {
+    align-self: center;
+    text-decoration: none;
+    color: #7A7878;
+}
+header .logo {
+    grid-area: logo;
+    width: 50px;
+}
+header .cab_txt {
+    grid-area: cab_txt;
+    width: 100%;
+    height: 400px;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+}
+header .cab_txt h2 {
+    background: #D8D7D7;
+    color: orangered;
+    opacity: 0.4;
+    padding: 32px 160px 96px 160px;
+    margin: 0;
+    font-size: 32px;
+}
+
+/* SECTION */
+
+section {
+    background: #D8D7D7;
+    display: grid;
+    grid-area: section;
+}
+
+/* ARTICLES */
+
+.article-1 .image {
+    background-image: url('images/sakura.jpg');
+}
+.article-2 .image {
+    background-image: url('images/comida.jpg');
+}
+.article-3 .image {
+    background-image: url('images/fuji.jpg');
+}
+.article-4 .image {
+    background-image: url('images/noche.jpg');
+}
+article:not(.article-5) {
+    padding: 11px;
+    background: #fafafa;
+    margin: 11px;
+}
+article .image {
+    height: 200px;
+    display: flex;
+    align-items: flex-end;
+    background-position: center;
+    background-size: cover;
+    margin-bottom: 3px;
+}
+article .image p {
+    color: yellow;
+    margin: 0;
+    margin-left: 3px;
+    opacity: 0.7;
+}
+article .title {
+    font-family: Helvetica, Arial, sans-serif;
+    background: #F08080;
+    padding: 16px 0px 0px 5px;
+    color: white;
+    display: block;
+    font-weight: bold;
+    font-size: larger;
+}
+article a {
+    font-weight: bold;
+}
+article .text {
+    column-count: 2;
+}
+.article-5 {
+    grid-area: article-5;
+    padding: 8px;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+}
+
+/*ASIDE*/
+
+aside {
+    background: #D8D7D7;
+    color: black;
+    padding: 32px;
+    display: grid;
+    align-content: flex-start;
+    grid-area: aside;
+    grid-template-areas: 
+    "something"
+    "texto_something"
+}
+aside h2.something {
+    grid-area: something;
+    margin-top: 10px;
+    text-align: center;    
+}
+aside p.texto_something {
+    grid-area: texto_something;
+    font-family: Helvetica, Arial, sans-serif;
+    text-align: center;
+    font-weight: bold;
+    align-items: flex-start    
+}
+
+/* FOOTER */
+
+footer {
+    background-color: #D8D7D7;
+    grid-area: footer;
+}
+footer p {
+    margin: 0 8px;
+    background-color: #F5F1F1;
+    padding: 8px;
+    display: flex;
+    justify-content: center;
+}
+
+/* VERSIÓN PARA MÓVIL */
+
+@media (max-width: 768px) {
+    header {
+        grid-template-areas: 
+            "logo" 
+            "link_1" 
+            "link_2" 
+            "link_3" 
+            "link_4" 
+            "link_5" 
+            "link_6"
+            "cab_txt";
+    }
+    .cab_txt {
+        text-align: center;
+    }
+    section {
+        grid-template-areas: 
+            "article-1" 
+            "article-2"
+            "article-3"
+            "article-4"
+            "article-5" 
+            "article-5";
+    }
+}
+
+/* VERSIÓN PARA DESKTOP */
+
+@media (min-width: 768px) {
+    main {
+        grid-template-areas: 
+        "header header header header header header header"
+        "section section section section section section aside"
+        "footer footer footer footer footer footer footer";
+    }
+    .cab_txt {
+        text-align: center;
+    }
+    section {
+        grid-template-areas: 
+            "article-1 article-2"
+            "article-3 article-4"
+            "article-5 article-5";
+    }
+    header {
+        grid-template-areas: 
+            "logo link_1 link_2 link_3 link_4 link_5 link_6"
+            "cab_txt cab_txt cab_txt cab_txt cab_txt cab_txt cab_txt";
+    }
+} 
+
+/* ANIMACIONES */
+
+/* El logo gira 360 grados cuando pasamos el ratón por encima */
+ .logo:hover{
+	animation: 1s girotresd 1;
+	backface-visibility: visible;
+ }
+
+ @keyframes girotresd{
+	40%{
+		-webkit-transform: perspective(800px)
+		                   translateZ(120px)
+		                   rotateY(170deg);
+		                   
+	}
+	80%{
+		-webkit-transform: perspective(800px)
+		                   translateZ(0px)
+		                   rotateY(360deg);
+		                   
+	}
+	100%{
+		-webkit-transform: perspective(800px)
+		                   rotateY(360deg);
+	}
+ }
+
+ /* El título del header se desplaza 100px en el eje X de izquierda a derecha al cargar la web durante 1.5 segundos */
+ .cab_txt {
+    animation: mover 1.5s ease-in;
+ }
+ @keyframes mover {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+ }
+
+ /* Animación de los iconos: se agrandan (hasta 26px desde que se carga la página durante 1.5 segundos */
+ header i{
+        font-size: 16px;
+        animation: size 1.5s;
+    }
+ @keyframes size {   
+    0% {
+        font-size: 16px;
+    }
+    20% {
+        font-size: 18px;
+    }
+    40% {
+        font-size: 20px;
+    }
+    60% {
+        font-size: 22px;
+    }
+    80% {
+        font-size: 24px;
+    }
+    100% {
+        font-size: 26px;
+    }
+ }
+ 
